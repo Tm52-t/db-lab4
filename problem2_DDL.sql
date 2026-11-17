@@ -1,0 +1,56 @@
+DROP DATABASE IF EXISTS library;
+CREATE DATABASE library;
+USE library;
+
+-- 1. AUTHOR Table
+CREATE TABLE AUTHOR (
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    country VARCHAR(50) NOT NULL
+);
+
+-- 2. PUBLISHER Table
+CREATE TABLE PUBLISHER (
+    publisher_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    country VARCHAR(50) NOT NULL
+);
+
+-- 3. CATEGORY Table
+CREATE TABLE CATEGORY (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+-- 4. BOOK Table
+CREATE TABLE BOOK (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    publish_year INT NOT NULL,
+    author_id INT NOT NULL,
+    publisher_id INT NOT NULL,
+    category_id INT NOT NULL,
+    FOREIGN KEY (author_id) REFERENCES AUTHOR(author_id) ON DELETE CASCADE,
+    FOREIGN KEY (publisher_id) REFERENCES PUBLISHER(publisher_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES CATEGORY(category_id) ON DELETE CASCADE
+);
+
+-- 5. MEMBER Table
+CREATE TABLE MEMBER (
+    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    join_date DATE NOT NULL
+);
+
+-- 6. LOAN Table
+CREATE TABLE LOAN (
+    loan_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT NOT NULL,
+    member_id INT NOT NULL,
+    loan_date DATE NOT NULL,
+    return_date DATE NULL,
+    FOREIGN KEY (book_id) REFERENCES BOOK(book_id) ON DELETE CASCADE,
+    FOREIGN KEY (member_id) REFERENCES MEMBER(member_id) ON DELETE CASCADE
+);
