@@ -1,7 +1,7 @@
 # Lab 4: Search Queries in SQL & Library Web Application
 
-- **Student Name:** Taha Mohamed Taha Abdelwahed (طه محمد طه عبدالواحد)
-- **Student ID:** `2304236`
+- **Student Name:** Taha Mohamed, Noor Elhawary
+- **Student ID:** `2304236,2304253`
 - **Course:** Database Systems (Computer and Communications Engineering)
 - **Institution:** Alexandria National University (ANU)
 
